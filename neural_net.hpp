@@ -1,7 +1,6 @@
 /*FILE: neural_net.hpp
  *Author: Michael Huelsman
- *Start Date: 4 Aug 2015 12:35 EDT
- *Last Revision:
+ *Start Date: 21 Sept 2015
  *Notes:
  *
 */
@@ -9,37 +8,24 @@
 #ifndef NEURAL_NET_HPP
 #define NEURAL_NET_HPP
 
-#include <vector>
-using std::vector;
+#include "neuron.hpp"
 
-class NeuralNet{
+class NeuralNetwork{
 public:
-  NeuralNet(vector<int> layerSizes);
-  NeuralNet(const NeuralNet &copy);
-  ~NeuralNet();
+  // constructors among others
+  NeuralNetwork();
+  NeuralNetwork(int *layerSizes, int layers);
+  NeuralNetwork(const NeuralNetwork &copy);
+  ~NeuralNetwork();
+  NeuralNetwork &operator=(const NeuralNetwork &copy);
 
-  vector<double> run(vector<double> input);
-
-  void freezeNet(); //prevents further learning from taking place(even if called)
-  void unfreezeNet(); //allows for further learning of the network
-  void randomize();
-
-  void train(vector<double> input, vector<double> expected, double learningRate); //performs training based on the expected output
-protected:
-  struct Dendrite;
-  struct Neuron;
-
-  void clear();
-
-  double activationFunction(double input);
-  double activationDerivative(double input);
-
-  double randomStrength(int digits);
+  //run and train(gun)
+  bool run(double *inputs, int inputSize, double *outputs, int outputSize);
+  bool train(double *inputs, int inputSize, double *expected, int expectedSize);
 private:
   Neuron **network;
-  int layers;
-  int *layerSize;
-  bool freeze;
+  int networkSize; //# of layers
+  int *layerSize; //size of each layer
 };
 
 #endif
