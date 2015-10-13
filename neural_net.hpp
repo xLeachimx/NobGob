@@ -22,6 +22,8 @@ public:
   //run and train(gun)
   bool run(double *inputs, int inputSize, double *outputs, int outputSize);
   bool train(double *inputs, int inputSize, double *expected, int expectedSize);
+protected:
+  void clear(); //clears out all activation and inputs for a fresh run
 private:
   Neuron **network;
   int networkSize; //# of layers

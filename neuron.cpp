@@ -66,8 +66,18 @@ void Neuron::addInput(int add){
   input += add;
 }
 
+void addInputs(double *add, int size){
+  for(int i = 0;i < size;i++){
+    input += add[i];
+  }
+}
+
 double Neuron::getError(){
   return error;
+}
+
+double Neuron::getOutput(){
+  return activation();
 }
 
 void Neuron::clear(){ //removes input, error, etc.

@@ -20,8 +20,10 @@ public:
 
   //basic manipulation/accessors
   void addInput(int add);
+  void addInputs(double *add, int size);
   void clear(); //removes input, error, etc.
   double getError();
+  double getOutput();
 
   //basic operation
   bool train(double expected, double lr);
