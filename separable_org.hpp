@@ -5,34 +5,23 @@
  *  basis of organism for the GA. This class provides a frame work for
  *  interacting with a neural network during the GA process
  *Date Started: 10 Sept 2015
- *Last Update: 10 Sept 2015
+ *Last Update: 23 Oct 2015
  *(C) All work is copyright of Michael Huelsman under the MIT Lisence
  */
+
+#ifndef SEPARABLEORG_HPP
+#define SEPARABLEORG_HPP
 
 #include "neural_net.hpp"
 
 class SeparableOrg{
 public:
-  //Creation & construction
-  SeparableOrg();
-  SeparableOrg(int chunkSize,int count);
-  ~SeparableOrg();
-  SeparableOrg(const SeparableOrg &copy);
-  SeparableOrg &operator=(const SeparableOrg &copy);
-
-  //info
-  int numChunks();
-  int chunkSize();
-  //chunk retrieval
-  unsigned char *getChunk(int i);
-  unsigned char *operator[](int i);
-
-  //NN usage
-  bool schemaTransform(int from, int to, NeuralNet transform);
+  virtual void mate(SeparableOrg &other) = 0;
+  virtual void applyTransform(NeuralNetwork transform) = 0;
+  virtual void mutate() = 0;
+  virtual void setFitness(double to) = 0;
 protected:
-  unsigned char randomByte();
 private:
-  unsigned char *byteString;
-  int bytesPerChunk;
-  int chunkCount;
 };
+
+#endif
