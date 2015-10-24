@@ -6,7 +6,7 @@
  *  interacting with a neural network during the GA process
  *Date Started: 10 Sept 2015
  *Last Update: 23 Oct 2015
- *(C) All work is copyright of Michael Huelsman under the MIT Lisence
+ *(C) All work is copyright of Michael Huelsman under the MIT Licence
  */
 
 #ifndef SEPARABLEORG_HPP
@@ -14,12 +14,24 @@
 
 #include "neural_net.hpp"
 
-class SeparableOrg{
+struct TransformCoord{
+  int from;
+  int to;
+};
+
+class SeparableOrganism{
 public:
-  virtual void mate(SeparableOrg &other) = 0;
+  virtual SeparableOrganism() = 0;
+  virtual SeparableOrganism(const SeparableOrganism &copy) = 0;
+  virtual ~SeparableOrganism() = 0;
+  virtual SeparableOrganism& operator=(const SeparableOrganism &copy) = 0;
+
+  //required methods
+  virtual void mate(SeparableOrganism &other) = 0;
   virtual void applyTransform(NeuralNetwork transform) = 0;
   virtual void mutate() = 0;
   virtual void setFitness(double to) = 0;
+  virtual void addTransform(TransformCoord tc) = 0;
 protected:
 private:
 };
