@@ -5,7 +5,7 @@
  *  basis of organism for the GA. This class provides a frame work for
  *  interacting with a neural network during the GA process
  *Date Started: 10 Sept 2015
- *Last Update: 23 Oct 2015
+ *Last Update: 24 Oct 2015
  *(C) All work is copyright of Michael Huelsman under the MIT Licence
  */
 
@@ -27,7 +27,7 @@ public:
   virtual SeparableOrganism& operator=(const SeparableOrganism &copy) = 0;
 
   //required methods
-  virtual void mate(SeparableOrganism &other) = 0;
+  virtual mate(SeparableOrganism &other, SeparableOrganism *children) = 0;
   virtual void applyTransform(NeuralNetwork transform) = 0;
   virtual void mutate() = 0;
   virtual void setFitness(double to) = 0;

@@ -4,8 +4,8 @@
  *  A dervied class of the SeparableOrganism this represents
  *  a determined number of bytes which ar used to represent
  *  genetic information
- *Date Started: 10 Sept 2015
- *Last Update: 23 Oct 2015
+ *Date Started: 22 Oct 2015
+ *Last Update: 24 Oct 2015
  *(C) All work is copyright of Michael Huelsman under the MIT Licence
  */
 
@@ -19,6 +19,7 @@ using std::vector;
 class ByteStringOrganism: public SeparableOrganism{
 public:
   //constructors
+  ByteStringOrganism();
   ByteStringOrganism();
   ByteStringOrganism(const ByteStringOrganism &copy);
   ~ByteStringOrganism();
@@ -35,7 +36,7 @@ private:
   unsigned char *data;
   int size;
   vector<TransformCoord> transforms;
-
+  double fitness;
 };
 
 #endif
